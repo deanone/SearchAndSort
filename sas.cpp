@@ -24,8 +24,8 @@ int sas::linearSearch(const std::vector<double>& arr, const double& key)
 	return index;
 }
 
-// Recursive implementation of binary search algorithm
-int sas::binarySearch(const std::vector<double>& arr, int start, int end, const double& key)
+// Recursive implementation of binary search algorithm (arr vector of int)
+int sas::binarySearch(const std::vector<int>& arr, int start, int end, int key)
 {
 	if ((key < arr[start]) || (key > arr[end]))
 	{
@@ -45,6 +45,31 @@ int sas::binarySearch(const std::vector<double>& arr, int start, int end, const 
 		else
 		{
 			return binarySearch(arr, start, mid - 1, key);
+		}
+	}
+}
+
+// Recursive implementation of binary search algorithm (arr plain int array)
+int sas::binarySearch(int arr[], int start, int end, int key)
+{
+	if (end < start)
+	{
+		return -1;
+	}
+	int mid = (start + end) / 2;
+	if (key == arr[mid])
+	{
+		return mid;
+	}
+	else
+	{
+		if (key > arr[mid])
+		{
+			binarySearch(arr, mid + 1, end, key);
+		}
+		else
+		{
+			binarySearch(arr, start, mid - 1, key);
 		}
 	}
 }

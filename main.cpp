@@ -31,12 +31,12 @@ int main(int argc, char *argv[])
 		{
 			// input array and search key
 			size_t n = 10000000;
-			std::vector<double> arr;
+			std::vector<int> arr;
 			for (size_t i = 0; i < n; ++i)
 			{
-				arr.push_back(static_cast<double>(i));
+				arr.push_back((i));
 			}
-			double key = static_cast<double>((n - 1) / 2);
+			double key = ((n - 1) / 2);
 
 			int start = clock();
 			int id = sas::binarySearch(arr, 0, arr.size() - 1, key);

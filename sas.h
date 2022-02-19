@@ -9,7 +9,8 @@ namespace sas
 {
 	bool approximatelyEqual(const double& a, const double& b);
 	int linearSearch(const std::vector<double>& arr, const double& key);
-	int binarySearch(const std::vector<double>& arr, int start, int end, const double& key);
+	int binarySearch(const std::vector<int>& arr, int start, int end, int key);
+	int binarySearch(int arr[], int start, int end, int key);
 	void bubbleSort(std::vector<double>& arr);
 }
 
