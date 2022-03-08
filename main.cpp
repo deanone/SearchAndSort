@@ -107,6 +107,27 @@ int main(int argc, char *argv[])
             }
             std::cout << "\n";
         }
+        else if (algorithm.compare("selection_sort") == 0)
+        {
+            int arr[] = {4, 1, 2, 6, 8, 7, 11, 3, 3};
+            int n = sizeof(arr) / sizeof(arr[0]);
+            std::cout << "Unsorted array:\n";
+            for (int i = 0; i < n; i++)
+            {
+                std::cout << arr[i] << " ";
+            }
+            std::cout << "\n";
+
+            sas::selectionSort(arr, n);
+
+            std::cout << "Sorted array:\n";
+
+            for (int i = 0; i < n; i++)
+            {
+                std::cout << arr[i] << " ";
+            }
+            std::cout << "\n";
+        }
         else if (algorithm.compare("quicksort") == 0)
         {
             int arr[] = {4, 1, 2, 6, 8, 7, 11, 3, 3};
@@ -135,6 +156,7 @@ int main(int argc, char *argv[])
             std::cout << "binary_search: for the binary search algorithm\n";
             std::cout << "bubble_sort: for the bubble sort algorithm\n";
             std::cout << "insertion_sort: for the insertion sort algorithm\n";
+            std::cout << "selection_sort: for the selection sort algorithm\n";
             std::cout << "quicksort: for the quicksort algorithm\n";
         }
     }
@@ -150,6 +172,7 @@ int main(int argc, char *argv[])
         std::cout << "binary_search: for the binary search algorithm\n";
         std::cout << "bubble_sort: for the bubble sort algorithm\n";
         std::cout << "insertion_sort: for the insertion sort algorithm\n";
+        std::cout << "selection_sort: for the selection sort algorithm\n";
         std::cout << "quicksort: for the quicksort algorithm\n";
         std::cout << std::endl;
         std::cout << "Example:\n";

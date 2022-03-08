@@ -15,6 +15,7 @@ namespace sas
     // Sorting
     void bubbleSort(std::vector<double>& arr);
     void insertionSort(int* arr, int n);
+    void selectionSort(int* arr, int n);
     int partition(int arr[], int lo, int hi);
     void quicksort(int arr[], int lo, int hi);
 }

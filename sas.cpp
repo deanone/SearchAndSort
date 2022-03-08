@@ -135,3 +135,24 @@ void sas::quicksort(int arr[], int lo, int hi)
 
     return;
 }
+
+// iterative implementation (time complexity: worst: O(n^2), average: O(n^2), best: O(n^2))
+void sas::selectionSort(int* arr, int n)
+{
+    for (int i = 0; i < (n - 1); i++)
+    {
+        int jMin = i;
+        for (int j = (i + 1); j < n; j++)
+        {
+            if (arr[j] < arr[jMin])
+            {
+                jMin = j;
+            }
+        }
+
+        if (jMin != i)
+        {
+            util::swap(arr, i, jMin);
+        }
+    }
+}
