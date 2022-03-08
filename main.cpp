@@ -86,6 +86,27 @@ int main(int argc, char *argv[])
             
             std::cout << std::endl;
         }
+        else if (algorithm.compare("insertion_sort") == 0)
+        {
+            int arr[] = {4, 1, 2, 6, 8, 7, 11, 3, 3};
+            int n = sizeof(arr) / sizeof(arr[0]);
+            std::cout << "Unsorted array:\n";
+            for (int i = 0; i < n; i++)
+            {
+                std::cout << arr[i] << " ";
+            }
+            std::cout << "\n";
+
+            sas::insertionSort(arr, n);
+
+            std::cout << "Sorted array:\n";
+
+            for (int i = 0; i < n; i++)
+            {
+                std::cout << arr[i] << " ";
+            }
+            std::cout << "\n";
+        }
         else
         {
             std::cout << "The program's argument can be one of the following:\n";
