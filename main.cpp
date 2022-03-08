@@ -47,7 +47,7 @@ int main(int argc, char *argv[])
             std::cout << "Elapsed time: " << elapsedTime << " milliseconds\n";
             std::cout << std::endl;
         }
-        else if (algorithm.compare("bubblesort_sort") == 0)
+        else if (algorithm.compare("bubble_sort") == 0)
         {
             std::vector<double> arr;
             arr.push_back(65);
@@ -107,12 +107,35 @@ int main(int argc, char *argv[])
             }
             std::cout << "\n";
         }
+        else if (algorithm.compare("quicksort") == 0)
+        {
+            int arr[] = {4, 1, 2, 6, 8, 7, 11, 3, 3};
+            int n = sizeof(arr) / sizeof(arr[0]);
+            std::cout << "Unsorted array:\n";
+            for (int i = 0; i < n; i++)
+            {
+                std::cout << arr[i] << " ";
+            }
+            std::cout << "\n";
+
+            sas::quicksort(arr, 0, n - 1);
+
+            std::cout << "Sorted array:\n";
+
+            for (int i = 0; i < n; i++)
+            {
+                std::cout << arr[i] << " ";
+            }
+            std::cout << "\n";
+        }
         else
         {
             std::cout << "The program's argument can be one of the following:\n";
             std::cout << "linear_search: for the linear search algorithm\n";
             std::cout << "binary_search: for the binary search algorithm\n";
-            std::cout << "bubblesort_sort: for the bubblesort sort algorithm\n";
+            std::cout << "bubble_sort: for the bubble sort algorithm\n";
+            std::cout << "insertion_sort: for the insertion sort algorithm\n";
+            std::cout << "quicksort: for the quicksort algorithm\n";
         }
     }
     else
@@ -125,7 +148,9 @@ int main(int argc, char *argv[])
         std::cout << std::endl;
         std::cout << "linear_search: for the linear search algorithm\n";
         std::cout << "binary_search: for the binary search algorithm\n";
-        std::cout << "bubblesort_sort: for the bubblesort sort algorithm\n";
+        std::cout << "bubble_sort: for the bubble sort algorithm\n";
+        std::cout << "insertion_sort: for the insertion sort algorithm\n";
+        std::cout << "quicksort: for the quicksort algorithm\n";
         std::cout << std::endl;
         std::cout << "Example:\n";
         std::cout << "./sas.out binary_search\n";

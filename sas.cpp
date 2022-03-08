@@ -85,7 +85,7 @@ void sas::bubbleSort(std::vector<double>& arr)
     }
 }
 
-// iterative implementation (time complexity: worst, average -> O(n^2) best: O(n))
+// iterative implementation (time complexity: worst: O(n^2), average: O(n^2), best: O(n))
 void sas::insertionSort(int* arr, int n)
 {
     int i = 1;
@@ -99,4 +99,39 @@ void sas::insertionSort(int* arr, int n)
         }
         i++;
     }
+}
+
+// Lomuto partition scheme, i.e., it selects the last element of the array as pivot
+int sas::partition(int arr[], int lo, int hi)
+{
+    int pivot = arr[hi];
+    int i = (lo - 1);
+    for (int j = lo; j < hi; j++)
+    {
+        if (arr[j] <= pivot)
+        {
+            i++;
+            util::swap(arr, i, j);
+        }
+    }
+    
+    i++;
+    util::swap(arr, i, hi);
+    
+    return i;
+}
+
+// Recursive implementation (time complexity: worst: O(n^2), average: O(nlogn), best: O(nlogn)) 
+void sas::quicksort(int arr[], int lo, int hi)
+{
+    if ((lo > hi) || (lo < 0))
+    {
+        return;
+    }
+
+    int p = partition(arr, lo, hi);
+    quicksort(arr, lo, p - 1);
+    quicksort(arr, p + 1, hi);
+
+    return;
 }
