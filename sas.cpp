@@ -85,6 +85,7 @@ void sas::bubbleSort(std::vector<double>& arr)
     }
 }
 
+// iterative implementation (time complexity: worst, average -> O(n^2) best: O(n))
 void sas::insertionSort(int* arr, int n)
 {
     int i = 1;
