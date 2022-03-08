@@ -5,8 +5,8 @@
 
 namespace util
 {
-	bool approximatelyEqual(double a, double b);
-	void swap(int* arr, int i, int j);
+    bool approximatelyEqual(double a, double b);
+    void swap(int* arr, int i, int j);
 }
 
 #endif
