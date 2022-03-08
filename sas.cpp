@@ -1,13 +1,7 @@
 #include "sas.h"
-#include <math.h>
-#include <limits> 
-#include <cstddef>
+#include "util.h"
 
-// Donald Knuth's proposal for a floating point comparison
-bool sas::approximatelyEqual(const double& a, const double& b)
-{
-    return fabs(a - b) <= ((fabs(a) < fabs(b) ? fabs(b) : fabs(a)) * std::numeric_limits<double>::epsilon());
-}
+#include <cstddef>
 
 // Base linear search algorithm
 int sas::linearSearch(const std::vector<double>& arr, const double& key)
@@ -15,7 +9,7 @@ int sas::linearSearch(const std::vector<double>& arr, const double& key)
     int index = -1;
     for (size_t i = 0; i < arr.size(); ++i)
     {
-        if (approximatelyEqual(key, arr[i]))
+        if (util::approximatelyEqual(key, arr[i]))
         {
             index = i;
             break;
@@ -34,7 +28,7 @@ int sas::binarySearch(const std::vector<int>& arr, int start, int end, int key)
     else
     {
         int mid = (start + end) / 2;
-        if (approximatelyEqual(key, arr[mid]))
+        if (util::approximatelyEqual(key, arr[mid]))
         {
             return mid;
         }
@@ -88,5 +82,20 @@ void sas::bubbleSort(std::vector<double>& arr)
                 arr[i + 1] = temp;
             }
         }
+    }
+}
+
+void sas::insertionSort(int* arr, int n)
+{
+    int i = 1;
+    while (i < n)
+    {
+        int j = i;
+        while ((j > 0) && (arr[j - 1] > arr[j]))
+        {
+            util::swap(arr, j - 1, j);
+            j--;
+        }
+        i++;
     }
 }
