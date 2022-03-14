@@ -1,15 +1,14 @@
 #include "sas.h"
 #include "util.h"
 
-#include <cstddef>
-
-// Base linear search algorithm
-int sas::linearSearch(const std::vector<double>& arr, const double& key)
+// Linear search algorithm (arr: vector of int)
+// Time complexity: O(n), where n is the number of elements in the array
+int sas::linearSearch(const std::vector<int>& arr, int key)
 {
     int index = -1;
     for (size_t i = 0; i < arr.size(); ++i)
     {
-        if (util::approximatelyEqual(key, arr[i]))
+        if (key == arr[i])
         {
             index = i;
             break;
@@ -18,7 +17,24 @@ int sas::linearSearch(const std::vector<double>& arr, const double& key)
     return index;
 }
 
-// Recursive implementation of binary search algorithm (arr vector of int)
+// Linear search algorithm (arr: plain int array)
+// Time complexity: O(n), where n is the number of elements in the array
+int sas::linearSearch(int arr[], int n, int key)
+{
+    int index = -1;
+    for (int i = 0; i < n; i++)
+    {
+        if (key == arr[i])
+        {
+            index = i;
+            break;
+        }
+    }
+    return index;
+}
+
+// Binary search algorithm (arr: vector of int)
+// Time complexity: O(logn), where n is the number of elements in the array
 int sas::binarySearch(const std::vector<int>& arr, int start, int end, int key)
 {
     if ((key < arr[start]) || (key > arr[end]))
@@ -27,8 +43,8 @@ int sas::binarySearch(const std::vector<int>& arr, int start, int end, int key)
     }
     else
     {
-        int mid = (start + end) / 2;
-        if (util::approximatelyEqual(key, arr[mid]))
+        int mid = (start + end) / 2;    // or int mid = start + ((end - start) / 2);
+        if (key == arr[mid])
         {
             return mid;
         }
@@ -43,49 +59,48 @@ int sas::binarySearch(const std::vector<int>& arr, int start, int end, int key)
     }
 }
 
-// Recursive implementation of binary search algorithm (arr plain int array)
+// Binary search algorithm (arr: plain int array)
+// Time complexity: O(logn), where n is the number of elements in the array
 int sas::binarySearch(int arr[], int start, int end, int key)
 {
     if (end < start)
     {
         return -1;
     }
-    int mid = (start + end) / 2;
+
+    int mid = (start + end) / 2;    // or int mid = start + ((end - start) / 2);
     if (key == arr[mid])
     {
         return mid;
     }
+    else if (key > arr[mid])
+    {
+        binarySearch(arr, mid + 1, end, key);
+    }
     else
     {
-        if (key > arr[mid])
-        {
-            binarySearch(arr, mid + 1, end, key);
-        }
-        else
-        {
-            binarySearch(arr, start, mid - 1, key);
-        }
+        binarySearch(arr, start, mid - 1, key);
     }
 }
 
 // Base Bubblesort algorithm (time complexity: O(n^2))
-void sas::bubbleSort(std::vector<double>& arr)
+// Time complexity: O(n^2), where n is the number of elements in the array
+void sas::bubbleSort(std::vector<int>& arr)
 {
-    for (size_t length = arr.size(); length > 0; length--)
+    for (size_t n = arr.size(); n > 0; n--)
     {
-        for (size_t i = 0; i < (length - 1); ++i)
+        for (size_t i = 0; i < (n - 1); ++i)
         {
-            double temp = arr[i];
             if (arr[i] > arr[i + 1])
             {
-                arr[i] = arr[i + 1];
-                arr[i + 1] = temp;
+                util::swap(arr, i, i + 1);
             }
         }
     }
 }
 
-// iterative implementation (time complexity: worst: O(n^2), average: O(n^2), best: O(n))
+// Insertion sort algorithm, iterative implementation
+// Time complexity: worst: O(n^2), average: O(n^2), best: O(n), where n is the number of elements in the array
 void sas::insertionSort(int* arr, int n)
 {
     int i = 1;
@@ -121,7 +136,8 @@ int sas::partition(int arr[], int lo, int hi)
     return i;
 }
 
-// Recursive implementation (time complexity: worst: O(n^2), average: O(nlogn), best: O(nlogn)) 
+// Quicksort algorithm, recursive implementation
+// Time complexity: worst: O(n^2), average: O(nlogn), best: O(nlogn), where n is the number of elements in the array 
 void sas::quicksort(int arr[], int lo, int hi)
 {
     if ((lo > hi) || (lo < 0))
@@ -136,7 +152,8 @@ void sas::quicksort(int arr[], int lo, int hi)
     return;
 }
 
-// iterative implementation (time complexity: worst: O(n^2), average: O(n^2), best: O(n^2))
+// Selection sort algorithm, iterative implementation
+// Time complexity: worst: O(n^2), average: O(n^2), best: O(n^2), where n is the number of elements in the array
 void sas::selectionSort(int* arr, int n)
 {
     for (int i = 0; i < (n - 1); i++)

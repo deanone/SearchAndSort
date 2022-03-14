@@ -8,12 +8,13 @@
 namespace sas
 {
     // Searching
-    int linearSearch(const std::vector<double>& arr, const double& key);
+    int linearSearch(const std::vector<int>& arr, int key);
+    int linearSearch(int arr[], int n, int key);
     int binarySearch(const std::vector<int>& arr, int start, int end, int key);
     int binarySearch(int arr[], int start, int end, int key);
 
     // Sorting
-    void bubbleSort(std::vector<double>& arr);
+    void bubbleSort(std::vector<int>& arr);
     void insertionSort(int* arr, int n);
     void selectionSort(int* arr, int n);
     int partition(int arr[], int lo, int hi);

@@ -11,12 +11,12 @@ int main(int argc, char *argv[])
         {
             // input array and search key
             size_t n = 10000000;
-            std::vector<double> arr;
+            std::vector<int> arr;
             for (size_t i = 0; i < n; ++i)
             {
-                arr.push_back(static_cast<double>(i));
+                arr.push_back(i);
             }
-            double key = static_cast<double>((n - 1) / 2);
+            int key = ((n - 1) / 2);
 
             int start = clock();
             int id = sas::linearSearch(arr, key);
@@ -36,7 +36,7 @@ int main(int argc, char *argv[])
             {
                 arr.push_back((i));
             }
-            double key = ((n - 1) / 2);
+            int key = ((n - 1) / 2);
 
             int start = clock();
             int id = sas::binarySearch(arr, 0, arr.size() - 1, key);
@@ -49,7 +49,7 @@ int main(int argc, char *argv[])
         }
         else if (algorithm.compare("bubble_sort") == 0)
         {
-            std::vector<double> arr;
+            std::vector<int> arr;
             arr.push_back(65);
             arr.push_back(15);
             arr.push_back(2);
@@ -79,9 +79,13 @@ int main(int argc, char *argv[])
             for (size_t i = 0; i < arr.size(); ++i)
             {
                 if (i != (arr.size() - 1))
+                {
                     std::cout << arr[i] << " ";
+                }
                 else
+                {
                     std::cout << arr[i];
+                }
             }
             
             std::cout << std::endl;
